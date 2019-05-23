@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dashboard</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'admin', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag 'logo.png' %>
+  </head>
+
+  <body data-fb-id='<%= ENV["FB_APP_ID"] %>'>
+    <div class="holder">
+    	<div class="menu">
+        <div class="logo">
+          <a href="/"><%= image_tag "logo.png" %></a>
+        </div>
+        <ul class="list">
+          <a href="/admin"><li class="<%= 'active' if current_page?(admin_path) %>"><i class="fa fa-home" aria-hidden="true"></i></li></a>
+          <a href="#"><li><i class="fa fa-archive" aria-hidden="true"></i></li></a>
+          <a href="#"><li><i class="fa fa-commenting" aria-hidden="true"></i></li></a>
+          <a href="/admin/settings"><li class="<%= 'active' if current_page?(admin_settings_path) %>"><i class="fa fa-cog" aria-hidden="true"></i></li>
+        </ul></a>
+        <div class="user-widget">
+          <% if current_user %>
+           <%= image_tag current_user.profile_pic %>
+           <a href="/signout"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+          <% end %>
+        </div> 
+      </div>
+
+      <div class="content <%= params[:controller] %>">
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>

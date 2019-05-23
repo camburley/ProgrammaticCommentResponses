@@ -1,0 +1,44 @@
+<section class="pages col-12">
+	<h1>Page Publishing:</h1>
+	<p class="label">YOUR FACEBOOK PAGES</p>
+	<ul>
+		<% if current_user.pages.any? %>
+			<% current_user.pages.each do |page|  %>
+				<li class="<%= if !current_user.page_selected.nil? && current_user.page_selected != page.id then 'not_connected' elsif current_user.page_selected == page.id then 'connected' end %>">
+					<%= image_tag page.picture if page.picture %>
+					<span><%= page.name %></span>
+					<% if current_user.page_selected == page.id %>
+						<%= link_to raw('<i class="fa fa-check" aria-hidden="true"></i><span id="link"></span>'), admin_settings_path(disconnect_page: true), method: :put %>
+					<% else %>
+						<%= link_to "Connect Page", admin_settings_path(page_id: page.id, select_page: true), method: :put %>
+					<% end %>
+				</li>
+			<% end %>
+		<% end %>
+	</ul>
+</section>
+
+<div class="flex-row">
+		<section class="echo col-6">
+			<h1>Echo:</h1>
+			<p class="label">By disabling this, your page will not respond to any message.</p>
+			
+			<div class="echo-box">
+		    <input type="checkbox" value="None" id="echo-box" name="check" <%= if current_page && current_page.echo == true then "checked" elsif current_page && current_page.echo == false then "" else "disabled" end %> />
+		    <label for="echo-box"></label>
+		  </div>
+		  
+		</section>
+</div>
+
+<script>
+	$('#echo-box').click(function() {
+	  var checked = $(this).is(':checked') ? true : false;
+	  
+	  $.ajax({
+	      type: "PUT",
+	      url: "/admin/settings",
+	      data: { echo: true }
+	   });     
+	});
+</script>

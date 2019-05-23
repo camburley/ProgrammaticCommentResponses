@@ -1,0 +1,30 @@
+<section class="menu">
+	<div class="logo">
+		<a href="/"><%= image_tag "logo-landing.png" %></a>
+	</div>
+	<ul>
+		<a href="#"><li>Home</li></a>
+		<a href="#"><li>Features</li></a>
+		<a href="#"><li>Screens</li></a>
+		<a href="#"><li>Pricing</li></a>
+		<a href="#"><li>Questions?</li></a>
+	</ul>
+	<div class="user-widget">
+    <% if current_user %>
+      <%= link_to "Admin", admin_path, id: "sign_out" %>
+    <% else %>
+      <%= link_to "Log In", "/auth/facebook/callback", id: "sign_in" %>
+    <% end %>
+  </div>
+</section>
+
+<section class="home">
+	<div class="info">
+		<div class="text">
+			<h1>Convert social media chatter into customer leads</h1>
+			<span class="line"></span>
+			<p class="desc">Automate responses to social media comments & improve customer service</p>
+		</div>
+		<div class="bg" style="background-image: url('<%= image_url 'bg.png' %>')"></div>
+	</div>
+</section>

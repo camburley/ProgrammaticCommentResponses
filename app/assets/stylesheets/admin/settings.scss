@@ -1,0 +1,36 @@
+.col-12, .col-6 { padding: 5px 0; margin-bottom: 35px; background-color: #fff; border-radius: 10px; }
+.col-6 { width: 50%; }
+.flex-row { display: flex; }
+p.label { margin: 0; padding: 0 20px 20px; color: #555; font-size: 13px; border-bottom: 1px solid #f3f2f2;}
+h1 { padding: 0 20px; font-weight: 100; }
+
+.content.setting { padding: 0 15%;
+	.pages { margin-top: 35px;
+		ul { padding: 0; margin: 0; list-style-type: none; max-height: 400px; overflow: scroll;
+			li { padding: 10px 20px; height: 50px; border-bottom: 1px solid #f3f2f2;
+				img { border-radius: 50%; }
+				span { display: inline-block; vertical-align: top; margin-top: 16px; margin-left: 20px; font-size: 18px; }
+				a { float: right; margin-top: 10px; padding: 5px 35px; border: 1px solid #ccc; color: #555; border-radius: 10px; text-decoration: none; transition: all 0.5s;
+					&:hover { box-shadow: 2px 2px 5px #ccc; }
+					i { margin-right: 10px; }
+				}
+
+				&.not_connected { display: none; }
+				&.connected { display: block;
+					a { color: #27ae60;
+						span#link { margin: 0; 
+							&:after { content: "Connected"; }	
+						}
+						&:hover { color: #c0392b;
+							span#link:after { content: "Disconnect";}
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	.echo {
+		
+	}
+}

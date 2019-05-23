@@ -1,0 +1,119 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree ./admin
+*/
+
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+@font-face {
+    font-family: 'Proxima Nova Regular';
+    src: asset-url('proxima-nova-regular.eot');
+    src: asset-url('proxima-nova-regular.eot?') format('embedded-opentype'), 
+    	asset-url('proxima-nova-regular.woff') format('woff'), 
+    	asset-url('proxima-nova-regular.svg') format('svg'), 
+    	asset-url('proxima-nova-regular.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+   
+body { background-color: #fff; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; font-family: 'Proxima Nova Regular'; min-width: 320px; margin: 0; }
+
+::-webkit-scrollbar { width: 2px; }
+::-webkit-scrollbar-track { -webkit-border-radius: 2px; border-radius: 2px; }
+::-webkit-scrollbar-thumb { -webkit-border-radius: 2px; border-radius: 2px; background: rgb(127, 140, 141); }
+::-webkit-scrollbar-thumb:window-inactive { background: rgb(127, 140, 141); }
+
+.holder { display: flex; }
+
+.menu	{ display: flex; flex-direction: column; position: fixed; width: 80px; height: 100%; background-color: #2C2C31; box-shadow: 4px 2px 10px #555;
+	.logo	{ height: 80px;
+		img { width: 75%; display: block; margin: 10px auto; }
+	}
+
+	.list { height: 100%; padding: 0; text-align: center;
+		li { color: #777; list-style-type: none; font-size: 22px; padding: 25px 0; transition: all 0.5s;
+			&:hover { color: #fff; }
+			&.active { color: #fff; }
+		}
+	}
+	.user-widget { height: 80px; background-color: #2F3038;
+		img { width: 40px; display: block; margin: 15px auto; border-radius: 50%; border: 2px solid #555; transition: all 0.5s; }
+		i { opacity: 0; position: absolute; bottom: 25px; left: 31px; font-size: 23px; text-align: -webkit-left; color: #0ce7ea; transition: all 0.5s; }
+		&:hover {
+			img { opacity: 0.3; }
+			i { display: block; opacity: 1;}
+		}
+	}
+}
+
+.content { width: 100%; margin-left: 80px; min-height: 100vh; background-color: #f3f2f2; }
+
+
+
+// Checkbox slider
+
+$activeColor: #27ae60; //green
+$darkenColor: darken($activeColor, 20%);
+$background: #3498db;
+
+.echo-box {
+  width: 80px;
+  height: 26px;
+  background: #333;
+  margin: 20px;
+  position: relative;
+  border-radius: 50px;
+  box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+  &:after {
+    content: 'OFF';
+    color: #000;
+    position: absolute;
+    right: 10px;
+    z-index: 0;
+    font: 12px/26px Arial, sans-serif;
+    font-weight: bold;
+    text-shadow: 1px 1px 0px rgba(255,255,255,.15);
+  }
+  &:before {
+    content: 'ON';
+    color: $activeColor;
+    position: absolute;
+    left: 10px;
+    z-index: 0;
+    font: 12px/26px Arial, sans-serif;
+    font-weight: bold;
+  }
+  label {
+    display: block;
+    width: 34px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    z-index: 1;
+    background: #fcfff4;
+    background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    border-radius: 50px;
+    transition: all 0.4s ease;
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+  }
+  input[type=checkbox] {
+    visibility: hidden;
+    &:checked + label {
+      left: 43px;
+    }
+  }    
+}
